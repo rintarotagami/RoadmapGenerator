@@ -1,18 +1,14 @@
 "use client";
 
-
 import React, { useState } from 'react';
-import useAuth from '../../../hooks/useAuth'; // useAuth フックをインポート
+import Link from 'next/link';
 import SearchBar from '../../elements/search/searchBar';
 import Hamburger from '../../elements/button/header_hamburger';
-import ProfileToggleButton from '../../elements/button/header_profile';
-import ConfigButton from '../../elements/button/header_config';
-import SigninButton from '../../elements/button/header_signin'; // ログインボタンのインポートが必要です
+
+import AuthToggleWrap from '../../elements/button/header_authtogglewrap';
 
 const Header = ({ webTitle }: { webTitle: string }) => {
     const [showNavigation, setShowNavigation] = useState(false);
-    const isLoggedIn = useAuth(); // ログイン状態を取得
-
     const toggleNavigation = () => setShowNavigation(!showNavigation);
 
     return (
@@ -20,22 +16,13 @@ const Header = ({ webTitle }: { webTitle: string }) => {
             <div className="flex items-center justify-start">
                 <Hamburger />
                 <div className="logo">
-                    <span style={{ color: 'white', fontSize: 'large' }}>{webTitle}</span>
+                    <Link href="/" style={{ color: 'white', fontSize: 'large' }}>{webTitle}</Link>
                 </div>
             </div>
             <div className="flex-grow flex items-center justify-center">
                 <SearchBar />
             </div>
-            <div className="flex items-center justify-end">
-                {isLoggedIn ? (
-                    <>
-                        <ProfileToggleButton />
-                        <ConfigButton />
-                    </>
-                ) : (
-                    <SigninButton />
-                )}
-            </div>
+            <AuthToggleWrap isLoggedIn={true} />
         </header>
     );
 };

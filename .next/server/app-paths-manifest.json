@@ -1,3 +1,8 @@
 {
-  "/(authrized)/(header)/page": "app/(authrized)/(header)/page.js"
+  "/(auth)/signup/page": "app/(auth)/signup/page.js",
+  "/(auth)/signin/page": "app/(auth)/signin/page.js",
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
+  "/(authorized)/(header)/roadmap/page": "app/(authorized)/(header)/roadmap/page.js",
+  "/api/signUp/route": "app/api/signUp/route.js",
+  "/(auth)/page": "app/(auth)/page.js"
 }
